@@ -4,7 +4,7 @@ a script for auto renew ssl license.
 
 Renew the lincese :
 
-./stop server
+sudo kill -9 $(ps ax | grep tomcat | fgrep -v grep | awk '{ print $1 }')
 
 sudo ./certbot-auto renew --preferred-challenge http
 
