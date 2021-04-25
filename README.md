@@ -1,8 +1,8 @@
-# scriptForRenewSslLicense
-a script for auto renew ssl license.
+
+# a script for auto renew ssl license.
 
 
-Renew the lincese :
+# Renew the lincese :
 
 sudo kill -9 $(ps ax | grep tomcat | fgrep -v grep | awk '{ print $1 }')
 
@@ -23,18 +23,12 @@ rm -rf ~/apache-tomcat-8.0.39/conf/letsencrypt/fullchain_and_key.p12
 
 sudo openssl pkcs12 -export -in ~/apache-tomcat-8.0.39/conf/letsencrypt/fullchain.pem -inkey ~/apache-tomcat-8.0.39/conf/letsencrypt/privkey.pem -out ~/apache-tomcat-8.0.39/conf/letsencrypt/fullchain_and_key.p12 -name tomcat -password pass:123456
 
-#-passout pass:
 
-123456
+sudo keytool -importkeystore -deststorepass '123456' -destkeypass '123456' -destkeystore ~/apache-tomcat-8.0.39/conf/letsencrypt/MyDSKeyStore.jks -srckeystore ~/apache-tomcat-8.0.39/conf/letsencrypt/fullchain_and_key.p12 -srcstoretype PKCS12 -srcstorepass '123456' -alias tomcat -noprompt
 
-123456
-
-sudo keytool -importkeystore -deststorepass '123456' -destkeypass '123456' -destkeystore ~/apache-tomcat-8.0.39/conf/letsencrypt/MyDSKeyStore.jks -srckeystore ~/apache-tomcat-8.0.39/conf/letsencrypt/fullchain_and_key.p12 -srcstoretype PKCS12 -srcstorepass '123456' -alias tomcat -y
-
-yes
 
 sudo ~/apache-tomcat-8.0.39/bin/./startup.sh 
 
-Logs:
+# Logs:
 
-/home/opc/apache-tomcat-8.0.39/conf/letsencrypt
+# /home/opc/apache-tomcat-8.0.39/conf/letsencrypt
