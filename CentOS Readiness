@@ -1,0 +1,9 @@
+
+# install dnf
+sudo yum install dnf -y
+sudo yum install dnf -y
+
+#install crontabs
+sudo dnf update
+sudo dnf install crontabs
+
