@@ -7,3 +7,14 @@ sudo yum install dnf -y
 sudo dnf update
 sudo dnf install crontabs
 
+# list all jobs
+crontab -l
+
+# Remove everything from crontab
+crontab -r
+
+# edit job
+crontab -e
+
+
+
