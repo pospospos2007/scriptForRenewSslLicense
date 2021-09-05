@@ -8,13 +8,13 @@ sudo dnf update
 sudo dnf install crontabs
 
 # list all jobs
-crontab -l
+sudo crontab -l
 
 # Remove everything from crontab
-crontab -r
+sudo crontab -r
 
 # edit job
-crontab -e
+sudo crontab -e
 
 
 
