@@ -3,7 +3,7 @@
 
 # Renew the lincese :
 
-kill -9 $(ps ax | grep tomcat | fgrep -v grep | awk '{ print $1 }')
+sudo kill -9 $(ps ax | grep tomcat | fgrep -v grep | awk '{ print $1 }')
 
 # sudo firewall-cmd --permanent --add-port=80/tcp
 
@@ -11,22 +11,22 @@ kill -9 $(ps ax | grep tomcat | fgrep -v grep | awk '{ print $1 }')
 
 # firewall-cmd --reload
 
-/home/opc/./certbot-auto renew --preferred-challenge http
+sudo /home/opc/./certbot-auto renew --preferred-challenge http
 
-cp /etc/letsencrypt/live/albert6.com/fullchain.pem /home/opc/apache-tomcat-8.0.39/conf/letsencrypt
+sudo cp /etc/letsencrypt/live/albert6.com/fullchain.pem /home/opc/apache-tomcat-8.0.39/conf/letsencrypt
 
-cp /etc/letsencrypt/live/albert6.com/privkey.pem  ~/apache-tomcat-8.0.39/conf/letsencrypt
-
-
-rm -rf /home/opc/apache-tomcat-8.0.39/conf/letsencrypt/fullchain_and_key.p12
-
-openssl pkcs12 -export -in /home/opc/apache-tomcat-8.0.39/conf/letsencrypt/fullchain.pem -inkey /home/opc/apache-tomcat-8.0.39/conf/letsencrypt/privkey.pem -out /home/opc/apache-tomcat-8.0.39/conf/letsencrypt/fullchain_and_key.p12 -name tomcat -password pass:123456
+sudo cp /etc/letsencrypt/live/albert6.com/privkey.pem  ~/apache-tomcat-8.0.39/conf/letsencrypt
 
 
-keytool -importkeystore -deststorepass '123456' -destkeypass '123456' -destkeystore /home/opc/apache-tomcat-8.0.39/conf/letsencrypt/MyDSKeyStore.jks -srckeystore /home/opc/apache-tomcat-8.0.39/conf/letsencrypt/fullchain_and_key.p12 -srcstoretype PKCS12 -srcstorepass '123456' -alias tomcat -noprompt
+sudo rm -rf /home/opc/apache-tomcat-8.0.39/conf/letsencrypt/fullchain_and_key.p12
+
+sudo openssl pkcs12 -export -in /home/opc/apache-tomcat-8.0.39/conf/letsencrypt/fullchain.pem -inkey /home/opc/apache-tomcat-8.0.39/conf/letsencrypt/privkey.pem -out /home/opc/apache-tomcat-8.0.39/conf/letsencrypt/fullchain_and_key.p12 -name tomcat -password pass:123456
 
 
-/home/opc/apache-tomcat-8.0.39/bin/./startup.sh
+sudo keytool -importkeystore -deststorepass '123456' -destkeypass '123456' -destkeystore /home/opc/apache-tomcat-8.0.39/conf/letsencrypt/MyDSKeyStore.jks -srckeystore /home/opc/apache-tomcat-8.0.39/conf/letsencrypt/fullchain_and_key.p12 -srcstoretype PKCS12 -srcstorepass '123456' -alias tomcat -noprompt
+
+
+sudo /home/opc/apache-tomcat-8.0.39/bin/./startup.sh
 
 # Logs:
 
