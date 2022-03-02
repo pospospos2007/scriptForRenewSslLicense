@@ -14,7 +14,7 @@ sudo crontab -l
 sudo crontab -r
 
 # edit job
-# 0 0 24 * * every 23th of the month
+# 0 0 23 * * every 23th of the month at 0 o'clock
 sudo crontab -e
 
 
