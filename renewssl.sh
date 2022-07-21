@@ -15,7 +15,7 @@ sudo /home/opc/./certbot-auto renew --preferred-challenge http
 
 sudo cp /etc/letsencrypt/live/albert6.com/fullchain.pem /home/opc/apache-tomcat-8.0.39/conf/letsencrypt
 
-sudo cp /etc/letsencrypt/live/albert6.com/privkey.pem  ~/apache-tomcat-8.0.39/conf/letsencrypt
+sudo cp /etc/letsencrypt/live/albert6.com/privkey.pem  /home/opc/apache-tomcat-8.0.39/conf/letsencrypt
 
 
 sudo rm -rf /home/opc/apache-tomcat-8.0.39/conf/letsencrypt/fullchain_and_key.p12
