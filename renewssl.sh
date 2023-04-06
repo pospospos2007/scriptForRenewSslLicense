@@ -1,5 +1,7 @@
 # a script for auto renew ssl license.
 
+#stop all apache2 service
+#systemctl stop apache2
 
 # Renew the lincese :
 
