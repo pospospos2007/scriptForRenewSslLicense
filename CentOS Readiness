@@ -17,5 +17,8 @@ sudo crontab -r
 # 0 0 23 * * every 23th of the month at 0 o'clock
 sudo crontab -e
 
+# fix issue of "error: Problem binding to port 80: Could not bind to IPv4 or IPv6"
+sudo systemctl stop nginx
+
 
 
